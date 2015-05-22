@@ -30,7 +30,8 @@ void setup() {
     for(int i=0;i<NUMPIXELS;i++){
 
     // pixels.Color takes RGB values, from 0,0,0 up to 255,255,255
-    pixels.setPixelColor(i, pixels.Color(250,0,200)); // Moderately bright green color.
+    if(i<(NUMPIXELS/2)){    pixels.setPixelColor(i, pixels.Color(200*(4-i)/4,200,200));}else{pixels.setPixelColor(i, pixels.Color(200-(NUMPIXELS-1-i)*25,0,200));}
+
 
 
   }
@@ -70,8 +71,10 @@ void loop() {
 for(i1 = 0;i1<128;i1++){
   Adata = AnalogValue[i1]/4;
   Serial.write(Adata);
+//    Serial.print(Adata,DEC);
 }
-
+Serial.println("");
+//delay(100);
   // wait 2 milliseconds before the next loop
   // for the analog-to-digital converter to settle
   // after the last reading:
