@@ -18,7 +18,7 @@ void setup()
   digitalWrite(LED_PIN, LOW);
   pinMode(LED_PIN, OUTPUT);
 
-  Serial3.begin(115200);
+  Serial1.begin(115200);
   Serial.begin(9600);
 
 
@@ -27,6 +27,7 @@ void setup()
   delay(500);
     digitalWrite(LED_PIN, LOW);
   delay(500);
+  while(!Serial);
   Serial.println("dsky test");
   ret = rcs620s.initDevice();
     Serial.println("initDeviceEnd");
