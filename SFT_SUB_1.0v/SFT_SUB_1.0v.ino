@@ -3,8 +3,8 @@
 #include <Wire.h>
 #include <inttypes.h>
 #include <string.h>
-
-//#define    debug
+#define    WithoutZigBee
+#define    debug
 #define    AddSub1    11
 #define COMMAND_TIMEOUT  400
 #define PUSH_TIMEOUT    2100
@@ -147,6 +147,8 @@ void receiveEvent(int howMany)
 void requestEvent()
 {
   Wire.write(TransmitData, 4);
+//  Serial.print("TransmitData[0] = ");
+//  Serial.print(TransmitData[0]); Serial.print(" ");
   //#if defined (debug)
   //  Serial.print("TransmitData[0] = ");
   //  Serial.print(TransmitData[0]); Serial.print(" "); Serial.print(TransmitData[1]); Serial.print(" "); Serial.println(TransmitData[2]);     // print the integer
