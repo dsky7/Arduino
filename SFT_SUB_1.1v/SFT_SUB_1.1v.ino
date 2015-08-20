@@ -46,7 +46,7 @@ void setup()
   while (!ret) {}
   digitalWrite(LED_PIN, LOW);
 
-  delay(300);
+  delay(500);
   for (int i = 0; i < NUMPIXELS; i++) {
     pixels.setPixelColor(i, pixels.Color(200, 50, 50)); // Moderately bright green color.
     delay(10);
@@ -55,9 +55,22 @@ void setup()
 
 void loop()
 {
+  
+//  while(1){
+//    for (int i = 0; i < NUMPIXELS; i++) {
+//          pixels.setPixelColor(i, pixels.Color(100,0,0)); // Moderately bright green color.
+//
+//    pixels.show(); // This sends the updated pixel color to the hardware.
+// //   pixels.setPixelColor(i, pixels.Color(200, 50, 50)); // Moderately bright green color.
+//   
+//  } pixels.show(); // This sends the updated pixel color to the hardware.
+//   delay(100);
+//  }
+ 
+   pixels.show(); // This sends the updated pixel color to the hardware.
   int ret;
   IDaccord = 0;
-
+ 
   // rcs620s.timeout = COMMAND_TIMEOUT;
   ret = rcs620s.polling();
 //#if defined (debug)
