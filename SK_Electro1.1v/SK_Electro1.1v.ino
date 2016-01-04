@@ -1,3 +1,4 @@
+#include <MsTimer2.h>
 int FanSpeed;
 unsigned long currentMillis;
 int ledState;
@@ -13,6 +14,10 @@ byte receiveData;
 unsigned long previousMillis = 0;        // will store last time LED was updated
 const long interval = 15000;           // interval at which to blink (milliseconds)
 void setup() {
+ 
+//  MsTimer2::set(500, flash);
+//  MsTimer2::start();
+ 
   pinMode(13, OUTPUT);
   pinMode(11, INPUT_PULLUP);
   // initialize serial communications at 9600 bps:
@@ -21,6 +26,20 @@ void setup() {
   TCCR1B &= B11111000;
   TCCR1B |= B00000001;
 }
+void flash() {
+  static boolean output = HIGH;
+
+  digitalWrite(13, output);
+  output = !output;
+}
+
+void timerFire() {
+  //100ms毎にここが呼び出される
+digitalWrite(13, 1);  
+//delay(500);  
+//digitalWrite(13, 0);
+}
+
 void startFan() {
   for (i1 = 0; i1 < 250; i1++) {
     analogWrite(9, i1);
@@ -50,8 +69,11 @@ void stopFan() {
     delay(10);
   }
 }
-void loop() {
 
+
+
+void loop() {
+//while(1){}
   while (1) {
     if (digitalRead(11) == 0) {
       FanMode++;
